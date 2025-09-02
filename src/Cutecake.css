@@ -1,0 +1,106 @@
+.cake-section {
+  height: 100vh; /* ruang kosong sebelum kue muncul */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e4e2dd;
+}
+
+.cake-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e4e2dd;
+  transition: background 1s ease-in-out;
+}
+
+.cake-wrap.dark-mode {
+  background: radial-gradient(circle at center, #222 0%, #000 100%);
+}
+
+.cake-svg {
+  width: 400px;
+  height: auto;
+}
+/* STEP ANIMASI */
+.cake-base {
+  fill: white;
+  opacity: 0;
+  animation: baseAppear 1s forwards;
+}
+@keyframes baseAppear {
+  to {
+    opacity: 1;
+  }
+}
+
+.cake-topping rect,
+.cake-topping path {
+  fill: #4b2e83;
+  opacity: 0;
+  animation: toppingAppear 1s forwards;
+  animation-delay: 1s;
+}
+@keyframes toppingAppear {
+  to {
+    opacity: 1;
+  }
+}
+
+.eyes circle {
+  fill: black;
+  opacity: 0;
+  animation: eyesAppear 0.8s forwards;
+  animation-delay: 2s;
+}
+.eye-glint {
+  fill: white;
+}
+
+.mouth {
+  fill: #3a2b18;
+  opacity: 0;
+  animation: mouthAppear 0.8s forwards;
+  animation-delay: 2.5s;
+}
+.tongue {
+  fill: #c74b2c;
+  opacity: 0;
+  animation: tongueAppear 0.8s forwards;
+  animation-delay: 2.7s;
+}
+
+.candles {
+  opacity: 0;
+  animation: candlesDrop 1s forwards;
+  animation-delay: 3.5s;
+}
+@keyframes candlesDrop {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Api lilin */
+.flame {
+  fill: orange;
+  animation: flicker 0.3s infinite alternate;
+  filter: drop-shadow(0 0 10px yellow);
+}
+@keyframes flicker {
+  from {
+    transform: scaleY(1) scaleX(1);
+    fill: orange;
+  }
+  to {
+    transform: scaleY(1.2) scaleX(0.9);
+    fill: gold;
+  }
+}

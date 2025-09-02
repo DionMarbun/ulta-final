@@ -1,42 +1,227 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* WAJIB di paling atas */
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&family=Festive&family=Great+Vibes&display=swap");
+
+:root {
+  font-family: 'Yellowtail', cursive;
+  margin: 0;
+  padding: 0;
+  background: #e4e2dd;
+}
+
+.birthday-container {
+  text-align: center;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.title {
+  font-family: "Festive", cursive; /* judul pakai Festive */
+  font-size: 4rem;
+  color: #ab5135;
+  margin-bottom: 40px;
+}
+
+.photos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.polaroid {
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 200px; /* maksimal 200px */
+  flex: 1 1 calc(33.33% - 20px); /* default 3 kolom */
+  transition: transform 0.3s ease;
+}
+
+.polaroid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.rotate-left {
+  transform: rotate(-5deg);
+}
+
+.rotate-right {
+  transform: rotate(5deg);
+}
+
+.polaroid:hover {
+  transform: scale(1.05);
+}
+
+.message {
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 20px;
+  font-family: "Great Vibes", cursive; /* pesan pakai Great Vibes */
+}
+
+.wish-button {
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  background: #ab5135;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: "Yellowtail", cursive; /* tombol pakai Yellowtail */
+}
+
+.wish-button:hover {
+  background: #913f29;
+}
+
+.app {
+  font-family: 'Poppins', sans-serif;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.birthday-container {
+  padding: 50px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Responsiveness ss*/
+@media (max-width: 768px) {
+  .polaroid {
+    flex: 1 1 calc(50% - 20px); /* 2 kolom di tablet */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 480px) {
+  .polaroid {
+    flex: 1 1 100%; /* 1 kolom penuh di HP kecil */
   }
 }
 
-.card {
-  padding: 2em;
+/* Section kosong tempat animasi */
+.cake-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 1s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.dark-bg {
+  background: #111;
+}
+
+/*    Kue  ssss  */
+.cake {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.cake-body {
+  width: 180px;
+  height: 100px;
+  background: white;
+  border-radius: 15px;
+  margin: auto;
+  animation: fadeIn 1s ease;
+}
+
+.cake-topping {
+  position: absolute;
+  top: -20px;
+  width: 180px;
+  height: 40px;
+  background: #4b2e83;
+  border-radius: 20px 20px 10px 10px;
+  animation: drop 1s ease;
+}
+
+/* Wajah */
+.face {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.eye {
+  width: 20px;
+  height: 20px;
+  background: black;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.mouth {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+/* Lilin */
+.candles {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.candle {
+  width: 10px;
+  height: 40px;
+  background: white;
+  animation: dropCandle 1s ease;
+}
+
+/* Api */
+.flames {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flame {
+  width: 10px;
+  height: 15px;
+  background: orange;
+  border-radius: 50%;
+  animation: flicker 0.5s infinite alternate;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes drop {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes dropCandle {
+  from { transform: translateY(-80px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes flicker {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(1.2); opacity: 1; }
 }

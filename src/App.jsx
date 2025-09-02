@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import "./App.css";
+import CuteCake from "./CuteCake";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="birthday-container">
+      <h1 className="title">Happy Birthday</h1>
+      <h1 className="subtitle">Therecia</h1>
+      <div className="photos">
+        <div className="polaroid rotate-left">
+          <img src="/images/gambar_1.jpg" alt="Foto 1" />
+        </div>
+        <div className="polaroid rotate-right">
+          <img src="/images/gambar_2.jpg" alt="Foto 2" />
+        </div>
+        <div className="polaroid rotate-left">
+          <img src="/images/gambar_3.jpg" alt="Foto 3" />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      {/* Bagian kue */}
+      <div className="cake-section">
+        <CuteCake />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
