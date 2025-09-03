@@ -1,0 +1,61 @@
+.photo-container {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+}
+
+.photo {
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* CSS pure heart (selalu merah, bukan emoji) */
+.floating-heart {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 1em;
+  height: 1em;
+  background-color: red;
+  transform: rotate(-45deg);
+  animation: floatUp linear forwards;
+  opacity: 0.9;
+  border-radius: 50% 50% 0 0;
+}
+
+.floating-heart::before,
+.floating-heart::after {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.floating-heart::before {
+  top: -50%;
+  left: 0;
+}
+
+.floating-heart::after {
+  left: 50%;
+  top: 0;
+}
+
+/* animasi */
+@keyframes floatUp {
+  0% {
+    transform: translateX(-50%) translateY(0) rotate(-45deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(calc(-50% + var(--drift))) translateY(-80px) rotate(-45deg) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(calc(-50% + var(--drift))) translateY(-160px) rotate(-45deg) scale(0.8);
+    opacity: 0;
+  }
+}

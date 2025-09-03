@@ -1,30 +1,45 @@
 .cake-section {
-  height: 100vh; /* ruang kosong sebelum kue muncul */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #e4e2dd;
-}
-
-.cake-wrap {
-  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #e4e2dd;
-  transition: background 1s ease-in-out;
+  flex-direction: column;
+  transition: background 2.5s ease-in-out; /* transisi lebih lambat */
 }
 
-.cake-wrap.dark-mode {
-  background: radial-gradient(circle at center, #222 0%, #000 100%);
+.cake-section.dark-bg {
+  background: radial-gradient(circle at center, rgba(0,0,0,0.9), rgba(0,0,0,1));
+}
+
+.cake-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cake-svg {
   width: 400px;
   height: auto;
 }
-/* STEP ANIMASI */
+
+/* Tulisan di atas kue */
+.wish-text {
+  font-family: "Comic Sans MS", "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ab5135;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  text-align: center;
+}
+
+.wish-text.show {
+  opacity: 1;
+}
+
+/* Animasi bagian kue */
 .cake-base {
   fill: white;
   opacity: 0;
@@ -103,4 +118,27 @@
     transform: scaleY(1.2) scaleX(0.9);
     fill: gold;
   }
+}
+
+.wish-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.wish-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cake-wrap {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.cake-wrap.show {
+  opacity: 1;
 }

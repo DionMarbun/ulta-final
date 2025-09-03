@@ -2,26 +2,37 @@ import React, { useEffect, useState } from "react";
 import "./CuteCake.css";
 
 export default function CuteCake() {
-  const [visible, setVisible] = useState(false);
+  const [startAnimation, setStartAnimation] = useState(false);
+  const [candlesLit, setCandlesLit] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const section = document.querySelector(".cake-section");
       if (section) {
         const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
-          setVisible(true);
+        if (rect.top < window.innerHeight * 0.8 && !startAnimation) {
+          // tunggu 3 detik sebelum animasi mulai
+          setTimeout(() => {
+            setStartAnimation(true);
+            // lilin nyala setelah cake muncul
+            setTimeout(() => setCandlesLit(true), 3500);
+          }, 3000);
         }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [startAnimation]);
 
   return (
-    <section className="cake-section">
-      <div className={`cake-wrap ${visible ? "show" : ""}`}>
+    <section className={`cake-section ${candlesLit ? "dark-bg" : ""}`}>
+      {/* Teks ucapan */}
+      <div className={`wish-text ${candlesLit ? "show" : ""}`}>
+        Don’t forget to make a wish before you blow out the candles!
+      </div>
+
+      <div className={`cake-wrap ${startAnimation ? "show" : ""}`}>
         <svg
           className="cake-svg"
           viewBox="0 0 400 260"
@@ -73,7 +84,7 @@ export default function CuteCake() {
             </g>
           </g>
 
-          {/* MULUT (digeser ke tengah) */}
+          {/* MULUT */}
           <path
             className="mouth"
             d="
@@ -86,23 +97,19 @@ export default function CuteCake() {
           <ellipse className="tongue" cx="200" cy="185" rx="18" ry="9" />
 
           {/* LILIN */}
-          <g className="candles">
-            {/* Lilin 1 */}
+          <g className={`candles ${candlesLit ? "lit" : ""}`}>
             <g transform="translate(100,50)">
               <rect width="14" height="40" fill="#ff4d4d" rx="3" />
               <ellipse className="flame" cx="7" cy="-6" rx="6" ry="9" />
             </g>
-            {/* Lilin 2 */}
             <g transform="translate(160,50)">
               <rect width="14" height="40" fill="#4da6ff" rx="3" />
               <ellipse className="flame" cx="7" cy="-6" rx="6" ry="9" />
             </g>
-            {/* Lilin 3 */}
             <g transform="translate(220,50)">
               <rect width="14" height="40" fill="#66cc66" rx="3" />
               <ellipse className="flame" cx="7" cy="-6" rx="6" ry="9" />
             </g>
-            {/* Lilin 4 */}
             <g transform="translate(280,50)">
               <rect width="14" height="40" fill="#ff80df" rx="3" />
               <ellipse className="flame" cx="7" cy="-6" rx="6" ry="9" />
