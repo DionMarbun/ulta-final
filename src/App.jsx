@@ -1,11 +1,32 @@
+import { useRef, useState } from "react";
 import "./App.css";
 import CuteCake from "./CuteCake";
 import PhotoWithLove from "./PhotoWithLove";
 import GreetingCard from "./GreetingCard";
 
 function App() {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlay = () => {
+    audioRef.current.play().catch(() => {
+      console.log("User gesture diperlukan untuk play audio.");
+    });
+    setIsPlaying(true); // tombol hilang setelah klik
+  };
+
   return (
     <div className="birthday-container">
+      {/* Audio Happy Birthday */}
+      <audio ref={audioRef} src="/music/happy-birthday.mp3" loop />
+
+      {/* Tombol Play muncul hanya sekali */}
+      {!isPlaying && (
+        <button onClick={handlePlay} className="music-btn">
+          ▶ Play Music
+        </button>
+      )}
+
       <h1 className="title">Happy Birthday</h1>
       <h1 className="subtitle">Therecia Vilarecia Gracia Haloho</h1>
 
@@ -34,7 +55,11 @@ function App() {
       <div className="cake-section">
         <CuteCake />
       </div>
-      <GreetingCard />
+
+      {/* Kartu ucapan */}
+      <div>
+        <GreetingCard />
+      </div>
     </div>
   );
 }

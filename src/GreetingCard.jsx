@@ -6,9 +6,9 @@ export default function GreetingCard() {
 
   return (
     <div className="card-scene" onClick={() => setOpen(!open)}>
-      <div className={`card ${open ? "is-open" : ""}`}>
-        {/* Halaman depan */}
-        <div className="card-face card-front">
+      <div className={`card-book ${open ? "open" : ""}`}>
+        {/* Cover kiri */}
+        <div className="card-page card-cover">
           <h2>🎉 HAPPY BIRTHDAY 🎉</h2>
           <div className="balloons">
             <div className="balloon red"></div>
@@ -18,15 +18,16 @@ export default function GreetingCard() {
           </div>
         </div>
 
-        {/* Halaman dalam */}
-        <div className="card-face card-inside">
+        {/* Halaman kanan dalam */}
+        <div className="card-page card-inside">
           <h2>💌 HAPPY BIRTHDAY!</h2>
           <p>Dear Therecia,</p>
           <p>
             Selamat ulang tahun ke-21! 🥳  
-            Semoga hari-harimu selalu penuh cinta, kebahagiaan,  
-            dan mimpi-mimpi indah yang tercapai.  
-            Terima kasih sudah jadi bagian berharga dalam hidupku. ❤️
+            Happy Birthday! 🥳
+Maaf ya kalau aku kadang bikin kamu kesel, padahal aslinya aku cuma pengen bikin kamu senyum. Aku seneng banget bisa deket sama kamu, rasanya hidup jadi lebih rame.
+
+Semoga ulang tahun ini jadi awal yang indah buat banyak hal baik datang ke hidupmu.|
           </p>
           <p className="signature">— Dari Dion</p>
         </div>
